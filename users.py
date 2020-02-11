@@ -40,7 +40,6 @@ if __name__ == "__main__":
         f = open("userdb", 'rb')
         users = pickle.load(f)
     except Exception as e:
-        print(e)
         users = {}
     done = False
     user = None
