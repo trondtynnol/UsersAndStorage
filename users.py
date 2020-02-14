@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pickle
 import hashlib
 
@@ -27,12 +29,15 @@ def login_user(users):
     username, hashed_pw = get_username_password()
     if username not in users:
         print("User does not exist")
+        return None
     elif hashed_pw != users[username].pwhash:
         print("Wrong password!")
+        return None
+    print("Login successful")
     return users[username]
 
-def get_score(user):
-    score = int(input("Provide score"))
+def set_score(user):
+    score = int(input("Provide score: "))
     user.scores.append(score)
 
 if __name__ == "__main__":
@@ -53,7 +58,7 @@ if __name__ == "__main__":
         elif command == 'v':
             print(user.name + " - " + str(user.scores))
         elif command == 's':
-            get_score(user)
+            set_score(user)
         elif command == '':
             done = True
         elif command == 'h':
